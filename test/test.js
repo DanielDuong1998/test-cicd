@@ -68,16 +68,38 @@ var list = {
 }
 
 describe('sum', function () {
-    for (let i = 1; i <= 10; i++) {
-        it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
-            chai.request(server)
-                .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.rs.should.be.eql(list[`${i}`].z);
-                    done();
-                });
-        });
-    }
+    // for (let i = 1; i <= 10; i++) {
+    //     it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
+    //         chai.request(server)
+    //             .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
+    //             .end((err, res) => {
+    //                 res.should.have.status(200);
+    //                 res.body.rs.should.be.eql(list[`${i}`].z);
+    //                 done();
+    //             });
+    //     });
+    // }
+
+    let i = 1;
+    it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
+        chai.request(server)
+            .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.rs.should.be.eql(list[`${i}`].z);
+                done();
+            });
+    });
+    i = 2;
+
+    it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
+        chai.request(server)
+            .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.rs.should.be.eql(list[`${i}`].z);
+                done();
+            });
+    });
 
 });
