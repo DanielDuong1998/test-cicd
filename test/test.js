@@ -1,18 +1,7 @@
-// var assert = require('assert');
-// describe('Array', function () {
-//     // describe('#indexOf()', function () {
-//     it('should return -1 when the value is not present', function () {
-//         assert.equal([1, 2, 3].indexOf(4), -1);
-//     });
-//     // });
-// });
-
-
 var chai = require('chai');
-var chaiHttp = require('chai-http');
-var server = require('../app');
-var should = chai.should();
-chai.use(chaiHttp);
+var assert = require('assert');
+const sum = require('../models/math.model');
+
 
 var list = {
     1: {
@@ -67,39 +56,15 @@ var list = {
     }
 }
 
-// describe('sum', function () {
-//     // for (let i = 1; i <= 10; i++) {
-//     //     it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
-//     //         chai.request(server)
-//     //             .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
-//     //             .end((err, res) => {
-//     //                 res.should.have.status(200);
-//     //                 res.body.rs.should.be.eql(list[`${i}`].z);
-//     //                 done();
-//     //             });
-//     //     });
-//     // }
+describe('arr', function () {
+    describe('#indexOf()', function () {
+        for (let i = 1; i <= 10; i++) {
+            it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function () {
+                let rs = sum.sum(+list[`${i}`].x, +list[`${i}`].y);
+                console.log('rs: ', rs);
+                assert.equal(rs, +list[`${i}`].z);
+            });
+        }
 
-let i = 1;
-it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
-    chai.request(server)
-        .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
-        .end((err, res) => {
-            res.should.have.status(200);
-            res.body.rs.should.be.eql(list[`${i}`].z);
-            done();
-        });
-});
-i = 2;
-
-it(`${list[`${i}`].x} + ${list[`${i}`].y} should return ${list[`${i}`].z}`, function (done) {
-    chai.request(server)
-        .get(`/sum?x=${list[`${i}`].x}&y=${list[`${i}`].y}`)
-        .end((err, res) => {
-            res.should.have.status(200);
-            res.body.rs.should.be.eql(list[`${i}`].z);
-            done();
-        });
-});
-
-// });
+    });
+})
