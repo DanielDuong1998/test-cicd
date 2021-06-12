@@ -8,16 +8,16 @@ app.get('/', (req, res) => {
     })
 })
 
-// app.get('/sum', (req, res) => {
-//     let x = +req.query.x || -9999;
-//     let y = +req.query.y || -9999;
-//     let z = x + y;
-//     // if (z == 10 || z == 20 || z == 30) z = 0;
-//     res.json({
-//         msg: `${x} + ${y} = ${z}`,
-//         rs: z
-//     })
-// })
+app.get('/sum', (req, res) => {
+    let x = +req.query.x || -9999;
+    let y = +req.query.y || -9999;
+    let z = x + y;
+    // if (z == 10 || z == 20 || z == 30) z = 0;
+    res.json({
+        msg: `${x} + ${y} = ${z}`,
+        rs: z
+    })
+})
 
 const PORT = 3000;
 app.listen(process.env.PORT || PORT, _ => {
