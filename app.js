@@ -13,7 +13,7 @@ app.get('/sum', (req, res) => {
     let x = +req.query.x || -9999;
     let y = +req.query.y || -9999;
     let z = math.sum(x, y);
-    if (z == 10 || z == 20 || z == 30) z = 0;
+    // if (z == 10 || z == 20 || z == 30) z = 0;
     res.json({
         msg: `${x} + ${y} = ${z}`,
         rs: z
